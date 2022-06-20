@@ -2,6 +2,7 @@ package com.pro100user.decorshopbackend.controller;
 
 import com.pro100user.decorshopbackend.dto.OrderDTO;
 import com.pro100user.decorshopbackend.dto.OrderUpdateDTO;
+import com.pro100user.decorshopbackend.entity.enums.Status;
 import com.pro100user.decorshopbackend.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -39,5 +41,12 @@ public class AdminController {
             @PathVariable("id") Long id
     ) {
         return orderService.delete(id);
+    }
+
+    @GetMapping("/order-statuses")
+    public List<String> statuses() {
+        return Arrays.stream(Status.values())
+                .map(Enum::name)
+                .toList();
     }
 }
