@@ -28,23 +28,23 @@ const ProductDetails = () => {
                 setLoading(false);
             })
             .catch(reason => {
-                toastr.error("Decor shop", "Виникли технічні проблеми");
+                toastr.error("Магазин квітів", "Виникли технічні проблеми");
             });
         ;
     }, []);
 
     const navigateToLogin = () => {
         navigate("/login");
-        toastr.info("Decor shop", "Щоб переглядати список бажаного потрібно авторизуватись");
+        toastr.info("Магазин квітів", "Щоб переглядати список бажаного потрібно авторизуватись");
     }
 
     const addToBasket = (id) => {
         $api.post("/user/basket", id)
             .then(response => {
-                toastr.success("Decor shop", "Товар успішно додано до кошика");
+                toastr.success("Магазин квітів", "Товар успішно додано до кошика");
             })
             .catch(reason => {
-                toastr.error("Decor shop", "Виникли технічні проблеми");
+                toastr.error("Магазин квітів", "Виникли технічні проблеми");
             });
     }
 
@@ -52,12 +52,17 @@ const ProductDetails = () => {
         $api.delete("/products/" + id)
             .then(response => {
                 if (response.data === true) {
-                    toastr.success("Decor shop", "Товар успішно видалено");
+                    toastr.success("Магазин квітів", "Товар успішно видалено");
                     navigate("/products");
                 }
             })
             .catch(reason => {
-                toastr.error("Decor shop", "Виникли технічні проблеми");
+                if (reason.response.status === 400) {
+                    toastr.error("Магазин квітів", reason.response.data.error);
+                }
+                else {
+                    toastr.error("Магазин квітів", "Виникли технічні проблеми");
+                }
             });
     }
 

@@ -30,14 +30,14 @@ const RegistrationForm = () => {
             const regUser = {surname: user.surname, name: user.name, email: user.email, phone: user.phone, password: user.password}
             $api.post('/registration', regUser)
                 .then(response => {
-                    toastr.success('Product shop', "Реєстрація успішна");
+                    toastr.success('Магазин квітів', "Реєстрація успішна");
                     navigate('/login');
                 })
                 .catch(reason => {
                     if (reason.response.status === 400) {
                         setError('email', {type: 'custom', message: reason.response.data.error});
                     } else {
-                        toastr.error("Product shop", "Виникли технічні проблеми");
+                        toastr.error("Магазин квітів", "Виникли технічні проблеми");
                     }
                 });
         }

@@ -1,29 +1,31 @@
 import React, {useEffect, useState} from 'react';
-import $api from "../../http";
+import {Typography} from "@mui/material";
+import Order from "../../Order/Order";
 import {toastr} from "react-redux-toastr";
-import {Button, Container, Typography} from "@mui/material";
-import Order from "../../components/Order/Order";
+import $api from "../../../http";
 
 const Orders = () => {
 
     const [orders, setOrders] = useState([]);
     const [isLoading, setLoading] = useState(true);
 
+    const [edit, setEdit] = useState(false);
+
     useEffect(() => {
         setLoading(true);
-        $api.get("/user/orders")
-            .then(value => {
-                setOrders(value.data);
+        $api.get("/admin/orders")
+            .then(response => {
+                setOrders(response.data);
                 setLoading(false);
             })
             .catch(reason => {
-                toastr.error("Магазин квітів", "Виникли технічні проблеми");
+                toastr.warning("Магазин квітів", reason.responce.data);
             });
-    }, []);
+    }, [edit]);
 
     return (
-        <Container maxWidth="xl" sx={{marginTop: "64px", paddingTop: "10px"}} style={{minHeight: "100vh"}}>
-            <Typography variant="h2" component="div">
+        <div>
+            <Typography variant="h4" component="div" style={{display: "flex", justifyContent: "center"}}>
                 Замовлення
             </Typography>
             <div>
@@ -41,7 +43,7 @@ const Orders = () => {
                                     <div>
                                         {
                                             orders.map(order => (
-                                                <Order order={order}/>
+                                                <Order order={order} orders={orders} setOrders={setOrders}/>
                                             ))
                                         }
                                     </div>
@@ -49,7 +51,7 @@ const Orders = () => {
                         </div>
                 }
             </div>
-        </Container>
+        </div>
     );
 };
 

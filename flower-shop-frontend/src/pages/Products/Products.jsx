@@ -28,7 +28,7 @@ const Products = () => {
                 setLoading(false);
             })
             .catch(reason => {
-                toastr.error("Decor shop", "Виникли технічні проблеми");
+                toastr.error("Магазин квітів", "Виникли технічні проблеми");
             });
     }, [])
 
@@ -38,9 +38,9 @@ const Products = () => {
                 setAllPage(response.data.count);
             })
             .catch(reason => {
-                toastr.error("Decor shop", "Виникли технічні проблеми");
+                toastr.error("Магазин квітів", "Виникли технічні проблеми");
             });
-    }, [])
+    }, [products])
 
    return (
         <Container maxWidth="xl" sx={{marginTop: "10px", paddingTop: "10px"}} style={{minHeight: "100vh"}}>

@@ -9,6 +9,7 @@ import ProductDetails from "../components/Products/ProductDetails/ProductDetails
 import LoginForm from "../components/LoginForm/LoginForm";
 import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
 import Orders from "../pages/Orders/Orders";
+import Admin from "../pages/Admin/Admin";
 
 const AppRoutes = () => {
 
@@ -45,7 +46,7 @@ const AppRoutes = () => {
 
         if (roles && roles.includes("ROLE_ADMIN")) {
             const adminRoutes = [
-                {path: "/admin", component: Home},
+                {path: "/admin", component: Admin},
             ];
 
             setRoutes(routes => routes = routes.concat(adminRoutes));

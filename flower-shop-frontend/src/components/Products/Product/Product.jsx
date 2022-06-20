@@ -12,26 +12,26 @@ const Product = ({product, isBasket}) => {
 
     const navigateToLogin = (i) => {
         navigate("/login");
-        toastr.info("Decor shop", "Щоб добавити в кошик потрібно авторизуватись");
+        toastr.info("Магазин квітів", "Щоб добавити в кошик потрібно авторизуватись");
     }
 
     const deleteWithBasket = (id) => {
         $api.post("/user/basket", id)
             .then(response => {
-                toastr.success("Decor shop", "Товар успішно видалений з кошика");
+                toastr.success("Магазин квітів", "Товар успішно видалений з кошика");
             })
             .catch(reason => {
-                toastr.error("Decor shop", "Виникли технічні проблеми");
+                toastr.error("Магазин квітів", "Виникли технічні проблеми");
             });
     }
 
     const addToBasket = (id) => {
         $api.post("/user/basket", id)
             .then(response => {
-                toastr.success("Decor shop", "Товар успішно доданий до кошика");
+                toastr.success("Магазин квітів", "Товар успішно доданий до кошика");
             })
             .catch(reason => {
-                toastr.error("Decor shop", "Виникли технічні проблеми");
+                toastr.error("Магазин квітів", "Виникли технічні проблеми");
             });
     }
 

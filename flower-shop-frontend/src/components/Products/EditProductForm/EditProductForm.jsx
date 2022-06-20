@@ -47,7 +47,7 @@ const EditProductForm = ({product, setOpen}) => {
                 }
             })
             .catch(reason => {
-                toastr.error("Decor shop", "Виникли технічні проблеми");
+                toastr.error("Магазин квітів", "Виникли технічні проблеми");
             });
     };
 

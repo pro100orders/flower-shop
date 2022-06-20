@@ -98,7 +98,7 @@ const Header = () => {
                         {
                             roles && roles.includes("ROLE_ADMIN") &&
                             <Typography variant="h6" component="div">
-                                <Link to={"/products"} style={{textDecoration: "none"}}>
+                                <Link to={"/admin"} style={{textDecoration: "none"}}>
                                     Адмін
                                 </Link>
                             </Typography>

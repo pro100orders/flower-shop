@@ -17,7 +17,7 @@ const Basket = () => {
                 setLoading(false);
             })
             .catch(reason => {
-                toastr.error("Product shop", "Виникли технічні проблеми");
+                toastr.error("Магазин квітів", "Виникли технічні проблеми");
             });
     }, [])
 
@@ -26,13 +26,13 @@ const Basket = () => {
             .then(response => {
                 if (response.data === true) {
                     setProducts([]);
-                    toastr.success("Product shop", "Замовлення оформлено");
+                    toastr.success("Магазин квітів", "Замовлення оформлено");
                 } else {
-                    toastr.error("Product shop", "Виникли технічні проблеми");
+                    toastr.error("Магазин квітів", "Виникли технічні проблеми");
                 }
             })
             .catch(reason => {
-                toastr.error("Product shop", "Виникли технічні проблеми");
+                toastr.error("Магазин квітів", "Виникли технічні проблеми");
             })
     }
 

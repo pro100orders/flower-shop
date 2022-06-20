@@ -17,7 +17,7 @@ const WishList = () => {
                 setLoading(false);
             })
             .catch(reason => {
-                toastr.error("Product shop", "Виникли технічні проблеми");
+                toastr.error("Магазин квітів", "Виникли технічні проблеми");
             });
     }, [])
 

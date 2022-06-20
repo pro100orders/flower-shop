@@ -64,6 +64,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public boolean delete(Long productId) {
+        Product product = productRepository.findById(productId).orElseThrow();
+        if(!product.getBaskets().isEmpty() || !product.getOrders().isEmpty()) {
+            throw new IllegalArgumentException("Видалення не доступне, так як цей товар використовується!");
+        }
         productRepository.deleteById(productId);
         return true;
     }
